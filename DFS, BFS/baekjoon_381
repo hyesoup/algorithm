@@ -1,0 +1,22 @@
+#최대 재귀를 늘려줘야 런타임 에러를 피할 수 있다
+
+import sys
+sys.setrecursionlimit(2000)
+
+def dfs(n):
+    visited[n] = True
+    v = graph[n]
+    if not visited[v]:
+        dfs(v)
+
+for i in range(int(input())):
+    n = int(input())
+    graph = [0] + list(map(int, input().split()))
+    visited = [True] + [False]*n
+    result=0
+    for j in range(n+1):
+        if not visited[j]:
+            dfs(j)
+            result += 1
+
+    print(result)
