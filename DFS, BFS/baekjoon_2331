@@ -1,0 +1,16 @@
+# 재귀함수로 풀어봄
+
+a, p = map(int, input().split())
+d = [a]
+
+def function(a,p):
+    b = 0
+    for i in str(a):
+        b += int(i)**p
+    if b not in d:
+        d.append(b)
+        function(b,p)
+    elif b in d:
+        return print(d.index(b))
+
+function(a,p)
