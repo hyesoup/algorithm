@@ -1,5 +1,6 @@
 # 내가 어려워하는 상하좌우 문제
 
+# 1. bfs
 from collections import deque
 
 n = int(input())
@@ -34,6 +35,44 @@ for i in range(n):
     for j in range(n):
         if graph[i][j] == 1:
             cnt.append(bfs(i,j))
+
+print(len(cnt))
+cnt.sort()
+for i in cnt:
+    print(i)
+
+
+# 2. dfs
+from collections import deque
+import sys
+n = int(sys.stdin.readline())
+graph = []
+for _ in range(n):
+    graph.append(list(map(int, input())))
+
+def dfs(x,y):
+    graph[x][y] = 0
+    global count
+
+    dx = [-1, 1, 0, 0]
+    dy = [0, 0, -1, 1]
+
+    for i in range(4):
+        nx = x+dx[i]
+        ny = y+dy[i]
+        if nx>=0 and ny>=0 and nx<n and ny<n:
+            if graph[nx][ny] == 1:
+                dfs(nx, ny)
+                count += 1
+    return count
+
+cnt = []
+
+for i in range(n):
+    for j in range(n):
+        if graph[i][j] == 1:
+            count = 1
+            cnt.append(dfs(i,j))
 
 print(len(cnt))
 cnt.sort()
