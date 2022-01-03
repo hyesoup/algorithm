@@ -1,0 +1,31 @@
+#한번에 맞은 문제ㅠㅠ 흑흑
+
+from collections import deque
+import sys
+n = int(sys.stdin.readline())
+m = int(sys.stdin.readline())
+graph = [[] for _ in range(n+1)]
+visited = [False] * (n+1)
+for _ in range(m):
+    a, b = map(int, sys.stdin.readline().split())
+    graph[a].append(b)
+    graph[b].append(a)
+    graph[a].sort()
+    graph[b].sort()
+cnt = 0
+def bfs(n):
+    global cnt
+    queue = deque([n])
+    v = queue.popleft()
+    visited[v] = True
+    for i in graph[v]:
+        queue.append(i)
+        if not visited[i]:
+            cnt += 1
+            bfs(i)
+    return cnt
+
+
+
+bfs(1)
+print(cnt)
