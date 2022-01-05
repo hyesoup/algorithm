@@ -1,0 +1,17 @@
+n = int(input())
+result = []
+for _ in range(n):
+    input_data = input().split()
+    result.append((input_data[0], input_data[1]))
+
+def setting(data):
+    return data[1]
+
+result.sort(key = setting)
+for i in result:
+    print(i[0], end=' ')
+
+
+# 소스코드
+# 홍길동 95
+# 이순신 77
