@@ -1,0 +1,40 @@
+# 풀이1
+
+def solution(N, stages):
+    dictionary={}
+    length = len(stages)
+    for i in range(1, N+1):
+        if length != 0:
+            count = stages.count(i)
+            dictionary[i] = count/length
+            length -= count
+        else:
+            dictionary[i] = 0
+    dictionary = sorted(dictionary, key=lambda x: -dictionary[x])
+    return dictionary
+   
+   
+   
+# 풀이2
+
+def setting(data):
+    return data[1]
+
+def solution(N, stages):
+    stages.sort()
+    per = []
+    for i in range(1, N+1):
+        if i in stages:
+            per.append(stages.count(i)/len(stages))
+            while i in stages:
+                stages.remove(i)
+        else:
+            per.append(0)
+    sett = []
+    for i in range(1,N+1):
+        sett.append((i, per[i-1]))
+    sett.sort(reverse= True, key = setting)
+    final=[]
+    for j in sett:
+        final.append(j[0])
+    return final
