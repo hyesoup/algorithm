@@ -1,9 +1,9 @@
 from collections import deque
-
-n,m=map(int, input().split())
+import sys
+n,m=map(int, sys.stdin.readline().split())
 maps=[]
 for i in range(n):
-  maps.append(list(input()))
+  maps.append(list(sys.stdin.readline()))
 
 dx=[1,-1,0,0]
 dy=[0,0,1,-1]
