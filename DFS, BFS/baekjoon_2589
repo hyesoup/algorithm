@@ -1,36 +1,40 @@
+# 고려할 것
+# 1. L의 위치마다 함수실행을 해서 graph[0,0]일때 L의 깊이, graph[0,1]일 때 L의 깊이 ... 이런식으로 전체를 다 돌려보고 그 중 최대 깊이를 가지는 부분을 찾아야한다
+# 2. BFS에서는 그 L과 다른 위치의 L간의 거리중 최대값을 cnt 변수에 저장한다. 이때 cnt = max(cnt, visited[nx][ny])로 cnt를 만들어야함
+# 3. python3으로는 시간초과 뜨고, pypy로 해야 통과가 된다
+
+## 내일 되면 풀이 까먹을 것 같다..! 여러번 반복해서 풀자
+
 from collections import deque
 import sys
-n,m=map(int, sys.stdin.readline().split())
-maps=[]
+n,m = map(int, sys.stdin.readline().split())
+graph = []
+for _ in range(n):
+    graph.append(list(map(str,sys.stdin.readline())))
+
+dx = [-1,1,0,0]
+dy = [0,0,-1,1]
+
+def bfs(x,y):
+    queue = deque()
+    queue.append((x,y))
+    visited = [[0] * m for _ in range(n)]
+    visited[x][y] = 1
+    cnt = 0
+    while queue:
+        x,y = queue.popleft()
+        for i in range(4):
+            nx = x+dx[i]
+            ny = y+dy[i]
+            if 0<=nx<n and 0<=ny<m and graph[nx][ny]=='L' and visited[nx][ny] ==0:
+                queue.append((nx,ny))
+                visited[nx][ny] = visited[x][y] + 1
+                cnt = max(cnt, visited[nx][ny])
+    return cnt-1
+
+answer = 0
 for i in range(n):
-  maps.append(list(sys.stdin.readline()))
-
-dx=[1,-1,0,0]
-dy=[0,0,1,-1]
-
-def bfs(i,j):
-  queue=deque()
-  queue.append((i,j))
-  visited=[[0]*m for _ in range(n)]
-  visited[i][j]=1
-  cnt=0
-  while queue:
-    x,y=queue.popleft()
-    for i in range(4):
-      nx=x+dx[i]
-      ny=y+dy[i]
-      if nx<0 or nx>=n or ny<0 or ny>=m:
-        continue
-      elif maps[nx][ny]=='L' and visited[nx][ny]==0:
-        visited[nx][ny]=visited[x][y]+1
-        cnt=max(cnt,visited[nx][ny])
-        queue.append((nx,ny))
-  return cnt-1
-
-result=0
-for i in range(n):
-  for j in range(m):
-    if maps[i][j]=='L':
-      result=max(result,bfs(i,j))
-
-print(result)
+    for j in range(m):
+        if graph[i][j] == 'L':
+            answer = max(answer,bfs(i,j))
+print(answer)
