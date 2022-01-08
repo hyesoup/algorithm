@@ -1,23 +1,26 @@
+# 원하는 조건을 만족하는 가장 알맞은 값을 찾으시오 -> 이진 탐색 유형
 import sys
 n, target = map(int, sys.stdin.readline().split())
 array = list(map(int, sys.stdin.readline().split()))
 array.sort()
 
-def binary_search(array, start, end, target):
-    mid = (start+end)//2
-    while start <= end:
-        what = 0
-        for i in array:
-            if i - array[mid] > 0:
-                what += i - array[mid]
+start = 0
+end = max(array)
 
-        if what == target:
-            return array[mid]
-        elif what > target:
-            end = mid-1
-        else:
-            start = mid+1
-print(binary_search(array, 0, n-1, target))
+result = 0
+while (start <= end):
+    mid = (start + end) // 2
+    what = 0
+    for i in array:
+        if i - mid > 0:
+            what += i - mid
+    if what < target:
+        end = mid-1
+    else:
+        result = mid
+        start = mid+1
+
+print(result)
 
 # 4 6
 # 19 15 10 17
