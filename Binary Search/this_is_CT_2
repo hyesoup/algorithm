@@ -1,0 +1,54 @@
+# 재귀함수를 이용한 풀이
+
+import sys
+n = int(sys.stdin.readline().rstrip())
+n_array = list(map(int,sys.stdin.readline().split()))
+m = int(sys.stdin.readline().rstrip())
+m_array = list(map(int,sys.stdin.readline().split()))
+
+n_array.sort()
+m_array.sort()
+
+def binary_selection(array, start, end, target):
+    if start > end:
+        return 'no'
+    mid = (start+end)//2
+    if array[mid] == target:
+        return 'yes'
+    elif array[mid] > target:
+        return binary_selection(array, start, mid-1, target)
+    elif array[mid] < target:
+        return binary_selection(array, mid+1, end, target)
+
+answer = []
+for i in m_array:
+    answer.append(binary_selection(n_array, 0, n-1, i))
+
+for j in answer:
+    print(j, end=' ')
+
+# 반복문을 이용한 문제 풀이
+def binary_selection2(array, start, end, target):
+    while start <= end:
+        mid = (start+end)//2
+        if array[mid] == target:
+            return 'yes'
+        elif array[mid] > target:
+            end = mid-1
+        else:
+            start = mid+1
+    return 'no'
+
+answer2 = []
+for i in m_array:
+    answer2.append(binary_selection2(n_array, 0, n-1, i))
+
+for j in answer2:
+    print(j, end=' ')
+
+
+
+# 5
+# 8 3 7 9 2
+# 3
+# 5 7 9
