@@ -1,0 +1,33 @@
+from collections import deque
+
+
+def bfs(a, b, visited, graph):
+    queue = deque()
+    queue.append((a,b))
+    visited[a][b] = 1
+    dx = [-2, -2, 2, 2, -1, -1, 1, 1]
+    dy = [1, -1, 1, -1, -2, 2, -2, 2]
+    while queue:
+        x,y = queue.popleft()
+        for i in range(8):
+            nx = x+dx[i]
+            ny = y+dy[i]
+            if 0<=nx<n and 0<=ny<n and visited[nx][ny] == 0:
+                if graph[nx][ny] == 1:
+                    visited[nx][ny] = visited[x][y] + 1
+                    return print(visited[nx][ny] -1)
+                else:
+                    visited[nx][ny] = visited[x][y] + 1
+                    queue.append((nx,ny))
+    return print(0)
+m = int(input())
+for _ in range(m):
+    n = int(input())
+    graph = [[0]*n for _ in range(n)]
+    visited = [[0]*n for _ in range(n)]
+    first_a, first_b = map(int, input().split())
+    graph[first_a][first_b] = 1
+    last_a, last_b = map(int, input().split())
+    graph[last_a][last_b] = 1
+
+    bfs(first_a, first_b,visited, graph)
