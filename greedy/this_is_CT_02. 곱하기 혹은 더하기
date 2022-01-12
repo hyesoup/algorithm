@@ -1,0 +1,11 @@
+str_s = list(input())
+
+answer = 0
+
+for i in range(0, len(str_s)):
+    if (int(str_s[i])*answer) > (int(str_s[i])+answer):
+        answer = max(answer, (int(str_s[i])*answer))
+    else:
+        answer = max(answer, (int(str_s[i])+answer))
+
+print(answer)
