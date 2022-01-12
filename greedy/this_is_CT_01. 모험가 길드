@@ -1,0 +1,9 @@
+n = int(input())
+arr = list(map(int, input().split()))
+arr.sort(reverse = True)
+cnt = 0
+while arr != []:
+    m = arr[0]
+    del arr[:m]
+    cnt+=1
+print(cnt)
