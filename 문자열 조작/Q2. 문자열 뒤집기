@@ -1,0 +1,8 @@
+# reverse()는 리스트에서만 가능
+# 슬라이싱[::-1]은 문자열 뿐만 아니라 리스트에도 사용할 수 있다 
+# but 여기서는 오류남 -> 시간복잡도가 O(1)이기 때문 (조금 과한 제한)
+
+# https://leetcode.com/problems/reverse-string
+
+s = list(input())
+s.reverse()
