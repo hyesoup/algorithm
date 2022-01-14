@@ -1,0 +1,13 @@
+# from collections import defaultdict
+# defaultdict란 dic[key]를 정의하고 value를 정의하지 않아도 default로 지정한 타입으로 자동 기록되게 해준다
+# 예를들어, dic = defaultdict(int)라면, dic['key']만 썼을 때 아무것도 안해도 value값은 0으로 자동 처리된다
+
+from collections import defaultdict
+input = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat']
+
+dic = defaultdict(list)
+
+for i in input:
+    dic[''.join(sorted(i))].append(i)
+
+print(dic.values())
