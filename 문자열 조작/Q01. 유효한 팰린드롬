@@ -3,6 +3,9 @@ https://leetcode.com/problems/valid-palindrome/
 # 영문자, 숫자 여부를 판별하는 함수 : .isalnum()
 # true는 1, false는 0
 
+
+#1. 리스트로 풀이
+
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         s = s.lower()
@@ -16,6 +19,29 @@ class Solution:
                 b.append(i)
 
         if b==b[::-1]:
-            return 1
+            print(1)
         else:
-            return 0
+            print(0)
+
+
+#2. deque으로 풀이
+
+from collections import deque
+queue = deque()
+for char in s:
+    if char.isalnum():
+        queue.append(char.lower())
+
+while len(queue)>1:
+    if queue.popleft() != queue.pop():
+        print(0)
+print(1)
+
+#3. 정규표현식으로 풀이
+
+import re
+s = "A man, a plan, a canal: Panama"
+s = s.lower()
+s = re.sub('[^a-z0-9]','',s)
+
+print(s == s[::-1])
