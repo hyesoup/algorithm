@@ -1,4 +1,5 @@
 # leetcode에서 오류남.. 왜?
+# ===>> grid에 들어간게 숫자가 아니라 문자였음..!
 
 # pycharm 코드
 from collections import deque
@@ -47,7 +48,7 @@ class Solution:
                     nx = x+dx[r]
                     ny = y+dy[r]
                     if 0<=nx<len(grid) and 0<=ny<len(grid[0]):
-                        if grid[nx][ny] == 1:
+                        if grid[nx][ny] == '1':
                             queue.append((nx,ny))
                             grid[nx][ny] = 0
 
@@ -55,7 +56,7 @@ class Solution:
 
         for i in range(len(grid)):
             for j in range(len(grid[0])):
-                if grid[i][j] == 1:
+                if grid[i][j] == '1':
                     bfs(i,j)
                     cnt += 1
         return cnt
