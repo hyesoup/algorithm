@@ -1,0 +1,19 @@
+# 일정 재구성
+
+from collections import defaultdict
+tickets = [['MUC', 'LHR'], ['JFK','MUC'], ['SFO','SJC'], ['LHR','SFO']]
+# [['JFK','SFO'],['JFK','ATL'],['SFO','ATL'],['ATL','JFK'],['ATL','SFO']]
+
+graph = defaultdict(list)
+route = []
+
+for a, b in sorted(tickets):
+    graph[a].append(b)
+
+def dfs(i):
+    while graph[i]:
+        dfs(graph[i].pop(0))
+    route.append(i)
+
+dfs('JFK')
+print(route[::-1])
