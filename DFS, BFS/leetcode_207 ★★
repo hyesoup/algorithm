@@ -1,0 +1,37 @@
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        # make graph
+        graph = collections.defaultdict(list)
+        for a, b in prerequisites : 
+            graph[a].append(b)
+            
+        # 모든 노드(0 ~ numCourses -1)를 순회하며 false가 있는지 검사함 (visited)
+        # false 있으면 검사 다 끝내도 됨
+        # 전체 노드를 검사하는 중에 이전에 검사를 해봤었던 노드가 등장할 수 있으니 가지치기 (checked)
+        visited = [False for _ in range(numCourses)]
+        checked = [False for _ in range(numCourses)]
+        
+        # 순환 구조 있으면 false, 없으면 true return
+        def dfs(cur_node: int) -> bool : 
+            # base condition
+            if checked[cur_node] : 
+                return True
+            
+            for next_node in graph[cur_node] : 
+                if visited[next_node] : # cycle graph
+                    return False
+                visited[next_node] = True
+                if not dfs(next_node) : 
+                    return False
+                visited[next_node] = False
+                
+            # 현재 노드에서 파생되는 탐색을 다 종료하고 checked 추가
+            checked[cur_node] = True
+            
+            return True
+        
+        for i in range(numCourses) : 
+            if not dfs(i) : 
+                return False
+            
+        return True
