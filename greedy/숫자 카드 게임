@@ -1,0 +1,31 @@
+# 1.
+n, m = map(int, input().split())
+array = []
+for i in range(n):
+    array.append(list(map(int, input().split())))
+
+min_array = []
+for i in range(len(array)):
+    min_array.append(min(array[i]))
+
+print(max(min_array))
+
+# 2.
+n, m = map(int, input().split())
+result = 0
+for i in range(n):
+    data = list(map(int, input().split()))
+    min_value = min(data)
+    result = max(result, min_value)
+print(result)
+
+# 3.
+n, m = map(int, input().split())
+result = 0
+for i in range(n):
+    data = list(map(int, input().split()))
+    min_value = 10001
+    for a in data:
+        min_value = min(min_value, a)
+    result = max(result, min_value)
+print(result)
