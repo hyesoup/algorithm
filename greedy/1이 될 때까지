@@ -1,0 +1,53 @@
+# 1.
+n, k = map(int, input().split())
+
+sum = 0
+
+while True:
+    if n == 1:
+        break
+    while n % k == 0:
+        n = n//k
+        sum += 1
+        if n == 1:
+            break
+    if n==1:
+        break
+    n -= 1
+    sum += 1
+
+print(sum)
+
+# 2.
+n, k = map(int, input().split())
+
+sum = 0
+
+while n >= k:
+    while n % k != 0:
+        n -= 1
+        sum += 1
+    n //= k
+    sum += 1
+
+while n>1:
+    n -= 1
+    sum += 1
+
+print(sum)
+
+# 3.
+n, k = map(int, input().split())
+sum = 0
+
+while True:
+    target = (n//k) * k
+    sum += (n-target)
+    n = target
+    if n < k:
+        break
+    sum += 1
+    n //= k
+
+sum += (n-1)
+print(sum)
