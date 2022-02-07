@@ -1,3 +1,4 @@
+# 1.
 str_s = list(input())
 
 answer = 0
@@ -9,3 +10,15 @@ for i in range(0, len(str_s)):
         answer = max(answer, (int(str_s[i])+answer))
 
 print(answer)
+
+# 2.
+s = list(map(int, input()))
+sum = 0
+for i in range(len(s)):
+    first = s[i]
+    if sum + first >= sum * first:
+        sum += first
+    else:
+        sum *= first
+
+print(sum)
