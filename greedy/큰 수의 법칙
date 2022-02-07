@@ -1,0 +1,27 @@
+# 1
+n, m, k = map(int, input().split())
+array = list(map(int, input().split()))
+array.sort(reverse = True)
+li = []
+
+while True:
+    for i in range(k):
+        if m == 0:
+            break
+        li.append(array[0])
+        m -= 1
+    if m == 0:
+        break
+    li.append(array[1])
+    m -= 1
+
+print(li)
+print(sum(li))
+
+# 2
+
+count = int(m / (k+1)) * k + m % (k+1)
+result = 0
+result += count*array[0]
+result += (m-count) * array[1]
+print(result)
