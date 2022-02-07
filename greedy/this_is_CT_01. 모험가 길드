@@ -1,3 +1,4 @@
+# 1.
 n = int(input())
 arr = list(map(int, input().split()))
 arr.sort(reverse = True)
@@ -7,3 +8,20 @@ while arr != []:
     del arr[:m]
     cnt+=1
 print(cnt)
+
+# 2.
+n = int(input())
+array = list(map(int, input().split()))
+array.sort()
+sum = 0
+
+MAX = array[-1]
+while n > 0:
+    n -= MAX
+    sum += 1
+    del array[-1]
+    del array[:MAX-1]
+    if len(array) > 0:
+        MAX = max(array)
+
+print(sum)
