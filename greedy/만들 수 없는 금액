@@ -1,0 +1,14 @@
+누적합을 for문으로 차근차근 구해나가면서, 숫자 1부터 비교해 나간다는 것이 포인트. 
+누적합보다 화폐단위가 클 경우에 그 사이에 만들 수 없는 수가 존재한다는 뜻임을 항상 기억.
+
+n = int(input())
+data = list(map(int, input().split()))
+data.sort()
+
+target = 1
+for x in data:
+    if target < x:
+        break
+    target += x
+
+print(target)
