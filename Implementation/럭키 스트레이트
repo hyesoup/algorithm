@@ -1,0 +1,17 @@
+n = input()
+half = int(len(n)//2)
+first = n[:half]
+second = n[half:]
+
+sum_first = 0
+sum_second = 0
+
+for i in first:
+    sum_first += int(i)
+for j in second:
+    sum_second += int(j)
+
+if sum_first == sum_second:
+    print('LUCKY')
+else:
+    print('READY')
