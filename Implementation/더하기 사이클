@@ -1,0 +1,18 @@
+n = str(input())
+first_n = n
+cnt = 1
+
+if int(n) < 10:
+    n = '0' + n
+
+while True:
+    first = n[0]
+    second = n[1]
+    summ = str(int(first) + int(second))
+    new = str(second + summ[-1])
+    if int(first_n) == int(new):
+        print(cnt)
+        break
+    else:
+        n = new
+        cnt += 1
