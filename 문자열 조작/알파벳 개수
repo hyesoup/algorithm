@@ -1,0 +1,12 @@
+from collections import Counter
+s = input()
+alpha = {}
+s_alpha = Counter(s).most_common()
+
+for i in range(97,123):
+    alpha[chr(i)] = 0
+for i in s_alpha:
+    alpha[i[0]] += i[1]
+
+for i in alpha.values():
+    print(i, end = ' ')
