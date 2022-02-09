@@ -1,0 +1,12 @@
+x, y = map(int, input().split())
+
+days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
+months = [31,28,31,30,31,30,31,31, 30,31,30,31]
+sum = 0
+
+for i in range(x-1):
+    sum += months[i]
+sum += y
+
+day = sum%7
+print(days[day])
