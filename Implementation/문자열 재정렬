@@ -1,0 +1,13 @@
+S = input()
+answer = []
+sum=0
+for i in S:
+    if i.isalpha() == True:
+        answer.append(i)
+        answer.sort()
+    else:
+        sum += int(i)
+answer.append(sum)
+
+for i in answer:
+    print(i, end = '')
