@@ -1,0 +1,19 @@
+from collections import defaultdict
+import sys
+
+input = sys.stdin.readline
+n,m = map(int, input().strip().split())
+NOT = defaultdict(int)
+for i in range(n+m):
+    NOT[input().strip()] += 1
+
+cnt = []
+
+for i in NOT:
+    if NOT[i] > 1:
+        cnt.append(i)
+
+print(len(cnt))
+cnt.sort()
+for i in cnt:
+    print(i)
