@@ -1,0 +1,28 @@
+# 1. 시간초과
+t = int(input())
+for _ in range(t):
+    func = input()
+    n = int(input())
+    array_1 = input().replace('[', '')
+    array_1 = array_1.replace(']', '')
+    array_1 = array_1.split(',')
+    array=[]
+    for i in array_1:
+        if i != '':
+            array.append(int(i))
+
+    flg = False
+    for i in func:
+        if len(array) == 0:
+            print('error')
+            flg = True
+            break
+        else:
+            if i == 'R':
+                array = array[::-1]
+            else:
+                del array[0]
+
+    if not flg:
+        print(array)
+
