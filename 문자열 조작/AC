@@ -26,3 +26,40 @@ for _ in range(t):
     if not flg:
         print(array)
 
+
+# 2. deque을 이용한 방법
+import sys
+from collections import deque
+input = sys.stdin.readline
+
+t = int(input().strip())
+for _ in range(t):
+    func = input().strip()
+    n = int(input().strip())
+    array = input().strip()[1:-1].split(',')
+    queue = deque(array)
+    rev, flag = 0,False
+
+    if n==0:
+        queue = []
+
+    for i in func:
+        if i == 'R':
+            rev += 1
+        else:
+            if len(queue) < 1:
+                flag = True
+                print('error')
+                break
+            else:
+                if rev % 2 != 0:
+                    queue.pop()
+                else:
+                    queue.popleft()
+
+    if not flag:
+        if rev % 2 == 0:
+            print('['+','.join(queue)+']')
+        else:
+            queue.reverse()
+            print('['+','.join(queue)+']')
