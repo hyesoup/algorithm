@@ -1,0 +1,6 @@
+s = input()
+s = s.split('-')
+answer = ''
+for i in range(len(s)):
+    answer += s[i][0]
+print(answer)
