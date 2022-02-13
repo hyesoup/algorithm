@@ -1,0 +1,13 @@
+# https://www.acmicpc.net/problem/7569
+
+for i in range(h):
+    for j in range(m):
+        for k in range(k):
+            if k ==0 :
+                print(1)
+                exit(0)
+print('exit')
+
+에서 k==0일 때 1을 출력하고 모든 프로세스를 끝내고 싶다면 exit(0)을 사용
+exit(0)은 모든 프로세스를 종료한다는 뜻이기 때문에 exit(0)을 사용하면 
+맨 아래에 있는 print('exit')문은 출력되지 않음
