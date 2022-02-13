@@ -1,0 +1,11 @@
+# https://jiwon-coding.tistory.com/98
+# 여러가지 정렬이 필요할 때는 sort(key=lambda x:(x[0], x[1])
+
+import sys
+input = sys.stdin.readline
+n = int(input())
+array = [list(map(int, input().split())) for _ in range(n)]
+array.sort(key = lambda x: (x[0], x[1]))
+
+for i in array:
+    print(*i)
