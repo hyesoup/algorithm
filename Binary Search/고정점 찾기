@@ -1,0 +1,15 @@
+n = int(input())
+array = list(map(int, input().split()))
+
+def binary_search(start, end):
+    while start <= end:
+        mid = (start + end) // 2
+        if mid == array[mid]:
+            return print(array[mid])
+        elif mid < array[mid]:
+            end = mid-1
+        else:
+            start = mid + 1
+    return print(-1)
+
+binary_search(0, n-1)
