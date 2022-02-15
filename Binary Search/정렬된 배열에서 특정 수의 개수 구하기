@@ -1,0 +1,27 @@
+n,x = map(int, input().split())
+array = list(map(int, input().split()))
+
+def binary_search(start, end, target, sum):
+    while start<=end:
+        mid = (start + end) // 2
+        if mid == 7:
+            return sum
+        if array[mid] == target:
+            sum += 1
+            del array[mid]
+            return sum
+        elif array[mid] < target:
+            start = mid + 1
+        else:
+            end = mid - 1
+    return sum
+
+sum=0
+
+for i in array:
+    sum = binary_search(0, n, x, sum)
+
+if sum == 0:
+    print(-1)
+else:
+    print(sum)
