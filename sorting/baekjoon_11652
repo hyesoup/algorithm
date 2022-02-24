@@ -1,0 +1,13 @@
+import sys
+from collections import defaultdict
+input = sys.stdin.readline
+
+n = int(input())
+array = defaultdict(int)
+
+for i in range(n):
+    a = int(input())
+    array[a] += 1
+
+sorted_array = sorted(array.items(), key = lambda x: (-x[1], x[0]))
+print(sorted_array[0][0])
