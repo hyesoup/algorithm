@@ -1,0 +1,90 @@
+import sys
+input = sys.stdin.readline
+
+def _1(graph):
+    graph = graph[::-1]
+    return graph
+
+def _2(graph):
+    for i in range(n):
+        graph[i] = graph[i][::-1]
+    return graph
+
+def _3(graph):
+    graph = [list(row)[::-1] for row in zip(*graph)]
+    return graph
+
+def _4(graph):
+    graph = [list(row) for row in list(zip(*graph))[::-1]]
+    return graph
+
+def _5(graph):
+    copy_graph = [[0]*m for _ in range(n)]
+    half_n = n//2
+    half_m = m//2
+
+    for i in range(half_n):
+        for j in range(half_m):
+            copy_graph[i][half_m + j] = graph[i][j]
+
+    for i in range(half_n):
+        for j in range(half_m, m):
+            copy_graph[half_n + i][j] = graph[i][j]
+
+    for i in range(half_n, n):
+        for j in range(half_m, m):
+            copy_graph[i][j - half_m] = graph[i][j]
+
+    for i in range(half_n, n):
+        for j in range(half_m):
+            copy_graph[i - half_n][j] = graph[i][j]
+
+    return copy_graph
+
+def _6(graph):
+    copy_graph = [[0] * m for _ in range(n)]
+    half_n = n // 2
+    half_m = m // 2
+
+    for i in range(half_n):
+        for j in range(half_m):
+            copy_graph[half_n + i][j] = graph[i][j]
+
+    for i in range(half_n):
+        for j in range(half_m, m):
+            copy_graph[i][j - half_m] = graph[i][j]
+
+    for i in range(half_n, n):
+        for j in range(half_m, m):
+            copy_graph[i - half_n][j] = graph[i][j]
+
+    for i in range(half_n, n):
+        for j in range(half_m):
+            copy_graph[i][half_m + j] = graph[i][j]
+
+    return copy_graph
+
+
+n,m,r = map(int, input().split())
+graph = [list(map(int, input().split())) for _ in range(n)]
+a = list(map(int, input().split()))
+
+for i in a:
+    if i == 1:
+        graph = _1(graph)
+    elif i==2:
+        graph = _2(graph)
+    elif i == 3:
+        graph = _3(graph)
+    elif i == 4:
+        graph = _4(graph)
+    elif i == 5:
+        graph = _5(graph)
+    else:
+        graph = _6(graph)
+
+
+for k in graph:
+    print(*k)
+
+
