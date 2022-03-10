@@ -1,0 +1,23 @@
+x = int(input())
+
+# cnt = 몇번째 그룹인지 확인 가능
+cnt_group = 0
+cnt = 1
+
+# cnt = 누적으로 더해서 x보다 커지면 stop (x가 몇번째 그룹에 있는지 확인 가능)
+while cnt_group < x:
+    cnt_group+=cnt
+    cnt += 1
+
+cnt -= 1
+# x가 뒤에서 몇번째에 있는지 확인
+n = cnt_group - x
+
+# x가 앞에서 몇번째에 있는지 확인
+x_position = cnt - n -1
+
+if cnt%2 == 0:
+    print(1+x_position,'/',cnt-x_position, sep='')
+
+else:
+    print(cnt-x_position,'/',1+x_position, sep='')
