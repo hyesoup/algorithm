@@ -1,0 +1,27 @@
+import math
+n = int(input())
+
+# array 안에 판별할 소수 넣기
+array = list(map(int,input().split()))
+# 소수 개수 세기 위한 변수
+cnt = 0
+
+def prime_num(x):
+    # cnt 불러옴
+    global cnt
+    # 1은 소수가 아니므로 별도 처리
+    if x == 1:
+        return cnt
+    # 주어진 수가 2부터 루트(주어진 수)까지 중 하나로라도 나눠지면 그건 소수가 아님
+    for j in range(2, int(math.sqrt(x))+1):
+        # 나눠지면
+        if x % j == 0:
+            # cnt에 아무것도 하지 말고 for문을 나가라
+            return cnt
+    # 나눠지지 않으면 소수 -> cnt에 1 추가
+    cnt += 1
+
+for i in array:
+    prime_num(i)
+
+print(cnt)
