@@ -1,0 +1,11 @@
+a,b = map(int, input().split())
+
+def func(a,b):
+    if b>=a:
+        if a%2 == 1:
+            print(a, end=' ')
+            return func(a+2,b)
+        else:
+            return func(a+1, b)
+
+func(a,b)
