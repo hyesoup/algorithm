@@ -1,0 +1,9 @@
+def func(x):
+    if x==0 or x==1:
+        return x
+    if l[x] == 0:
+        l[x] = func(x-1) + func(x-2)
+    return l[x]
+
+l = [0]*201
+print(func(int(input()))%10009)
