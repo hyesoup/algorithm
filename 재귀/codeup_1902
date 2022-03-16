@@ -1,0 +1,7 @@
+def func(x):
+    if x == 0:
+        return 0
+    print(x)
+    return func(x-1)
+
+func(int(input()))
