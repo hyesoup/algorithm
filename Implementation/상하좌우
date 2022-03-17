@@ -1,3 +1,4 @@
+# 첫번째 풀이
 from collections import deque
 n = int(input())
 plans = input().split()
@@ -17,3 +18,23 @@ for plan in plans:
         x,y = nx,ny
 
 print(x,y)
+
+# 두번째 풀이
+n = int(input())
+go = input().split()
+
+dx = [0,0,-1,1]
+dy = [-1,1,0,0]
+go_list = ['L','R','U','D']
+
+x,y = 0,0
+for i in range(len(go)):
+    for j in range(4):
+        if go[i] == go_list[j]:
+            nx, ny = x+dx[j], y+dy[j]
+            if 0 <= nx < n and 0<= ny < n:
+                x,y = nx,ny
+                break
+            break
+print(x+1,y+1)
+
