@@ -1,0 +1,13 @@
+n = int(input())
+
+def func(n):
+    print(n)
+    if n==1:
+        return
+    if n % 2 == 1:
+        func(3*n+1)
+    if n % 2 == 0:
+        func(n//2)
+
+
+func(n)
